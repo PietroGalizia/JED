@@ -15,6 +15,7 @@ Citation
 Use the following to cite this code:
 
 - Galizia, P. Jörmungandr's Elemental Diets: The World Snake https://github.com/PietroGalizia/JED.git, 2024.
+- Galizia, P. (2024). Jörmungandr's Elemental Diets: The World Snake — An Immersive Educational Videogame for Exploring the Periodic Table of Elements with Real-World Contexts and Examples. https://doi.org/10.5281/zenodo.10643098
 
 Installing and Running JED
 ============================
