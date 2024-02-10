@@ -178,7 +178,7 @@ def start_new_game(selected_diet, window_to_close):
     score = 0
     direction = 'down'
     diet = selected_diet
-    label.config(text="Jörmungandr is hungry of \n{}\nJust eaten: {}                |        It cannot eat Thor!".format(diet, score))
+    label.config(text="Jörmungandr is hungry of \n{}\     Eaten: {}          |        It cannot eat Thor!".format(diet, score))
     canvas.delete("all")
     snake = Snake()
     food = Food()
@@ -209,7 +209,7 @@ for option in main_menu_options:
 score = 0
 direction = 'down'
 diet = Diets_list [0]
-label = Label(window, text="Jörmungandr is hungry of \n{}\n     Just eaten: {}          |        It cannot eat Thor!   ".format(diet, score), font=('Corbel', SIZE))
+label = Label(window, text="Jörmungandr is hungry of \n{}\n     Eaten: {}          |        It cannot eat Thor!   ".format(diet, score), font=('Corbel', SIZE))
 label.pack()
 
 # Create the canvas for the game
@@ -271,7 +271,7 @@ def next_turn(snake, food):
             score += round(len(elements)/(len(elements) - len(Elements_of_Diet[Diets_list.index(diet)])))
 
 
-        label.config(text="Jörmungandr is hungry of \n{}\n     Just eaten: {}         |        It cannot eat Thor!   ".format(diet, score))
+        label.config(text="Jörmungandr is hungry of \n{}\n     Eaten: {}         |        It cannot eat Thor!   ".format(diet, score))
         canvas.delete("food")
         food = Food()
         space_pressed = False  # Resetta la variabile space_pressed
@@ -299,7 +299,7 @@ def next_turn(snake, food):
             score += round(len(elements)/(len(elements) - len(Elements_of_Diet[Diets_list.index(diet)])))
         else:
             score -= round(len(elements)/len(Elements_of_Diet[Diets_list.index(diet)]))
-        label.config(text="Jörmungandr is hungry of \n{}\n     Just eaten: {}            |     It cannot eat Thor!   ".format(diet, score))
+        label.config(text="Jörmungandr is hungry of \n{}\n     Eaten: {}            |     It cannot eat Thor!   ".format(diet, score))
         canvas.delete("food")
         food = Food()
     else:
