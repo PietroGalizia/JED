@@ -293,7 +293,7 @@ def next_turn(snake, food):
 
     snake.squares.insert(0, square)
 
-    if x == food.coordinates[0] and y == food.coordinates[1]:
+    if x == food.coordinates[0] and y == food.coordinates[1] and canvas.itemcget(food.element_text, "text") != "Th":
         element_eaten = canvas.itemcget(food.element_text, "text")
         if element_eaten in Elements_of_Diet[Diets_list.index(diet)]:
             score += round(len(elements)/(len(elements) - len(Elements_of_Diet[Diets_list.index(diet)])))
@@ -307,7 +307,7 @@ def next_turn(snake, food):
         canvas.delete(snake.squares[-1])
         del snake.squares[-1]
 
-    if check_collisions(snake):
+    if check_collisions(snake, food):
         game_over(diet)
     else:
         window.after(SPEED, next_turn, snake, food)
@@ -331,14 +331,14 @@ def change_direction(new_direction):
             direction = new_direction
 
 # Function to check for collisions
-def check_collisions(snake):
+def check_collisions(snake, food):
     x, y = snake.coordinates[0]
 
     if x < 0 or x >= WINDOW_WIDTH:
         return True
     elif y < 0 or y >= WINDOW_HEIGHT:
         return True
-    elif canvas.itemcget(food.element_text, "text") == "Th":
+    elif cx == food.coordinates[0] and y == food.coordinates[1] and canvas.itemcget(food.element_text, "text") == "Th":
         return True
 
     for body_part in snake.coordinates[1:]:
