@@ -146,7 +146,7 @@ main_menu_options = ["New Game", "Exit"]
 # Create the main window
 window = Tk()
 window.title("Jörmungandr's Elemental Diets: The World Snake")
-window.attributes('-fullscreen', True)
+window.resizable(False, False)
 
 
 # Function to ask for diet selection before starting a new game
