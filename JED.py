@@ -178,7 +178,7 @@ def start_new_game(selected_diet, window_to_close):
     score = 0
     direction = 'down'
     diet = selected_diet
-    label.config(text="Jörmungandr is hungry of \n{}\     Eaten: {}          |        It cannot eat Thor!".format(diet, score))
+    label.config(text="Jörmungandr is hungry of \n{}\     Score: {}          |        It cannot eat Thor!".format(diet, round(score)))
     canvas.delete("all")
     snake = Snake()
     food = Food()
@@ -209,7 +209,7 @@ for option in main_menu_options:
 score = 0
 direction = 'down'
 diet = Diets_list [0]
-label = Label(window, text="Jörmungandr is hungry of \n{}\n     Eaten: {}          |        It cannot eat Thor!   ".format(diet, score), font=('Corbel', SIZE))
+label = Label(window, text="Jörmungandr is hungry of \n{}\n     Score: {}          |        It cannot eat Thor!   ".format(diet, round(score)), font=('Corbel', SIZE))
 label.pack()
 
 # Create the canvas for the game
@@ -266,12 +266,11 @@ def next_turn(snake, food):
 
         #Balancing the scores so that continuously pressing the space bar does not give any advantage
         if element_changed in Elements_of_Diet[Diets_list.index(diet)]:
-            score -= round(len(elements)/len(Elements_of_Diet[Diets_list.index(diet)]))
+            score -= ((len(elements) - len(Elements_of_Diet[Diets_list.index(diet)]))/len(elements))*100
         else:
-            score += round(len(elements)/(len(elements) - len(Elements_of_Diet[Diets_list.index(diet)])))
+            score += (len(Elements_of_Diet[Diets_list.index(diet)])/len(elements))*100
 
-
-        label.config(text="Jörmungandr is hungry of \n{}\n     Eaten: {}         |        It cannot eat Thor!   ".format(diet, score))
+        label.config(text="Jörmungandr is hungry of \n{}\n     Score: {}         |        It cannot eat Thor!   ".format(diet, round(score)))
         canvas.delete("food")
         food = Food()
         space_pressed = False  # Resetta la variabile space_pressed
@@ -296,10 +295,10 @@ def next_turn(snake, food):
     if x == food.coordinates[0] and y == food.coordinates[1] and canvas.itemcget(food.element_text, "text") != "Th":
         element_eaten = canvas.itemcget(food.element_text, "text")
         if element_eaten in Elements_of_Diet[Diets_list.index(diet)]:
-            score += round(len(elements)/(len(elements) - len(Elements_of_Diet[Diets_list.index(diet)])))
+            score += score += ((len(elements) - len(Elements_of_Diet[Diets_list.index(diet)]))/len(elements))*100
         else:
-            score -= round(len(elements)/len(Elements_of_Diet[Diets_list.index(diet)]))
-        label.config(text="Jörmungandr is hungry of \n{}\n     Eaten: {}            |     It cannot eat Thor!   ".format(diet, score))
+            score -= (len(Elements_of_Diet[Diets_list.index(diet)])/len(elements))*100
+        label.config(text="Jörmungandr is hungry of \n{}\n     Score: {}            |     It cannot eat Thor!   ".format(diet, round(score)))
         canvas.delete("food")
         food = Food()
     else:
